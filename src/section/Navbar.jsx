@@ -1,25 +1,32 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-function Navigation() {
+function Navigation({ onLinkClick }) {
+  // Función que se llama al hacer clic en cualquier enlace
+  const handleLinkClick = () => {
+    if (onLinkClick) {
+      onLinkClick(); // Ejecuta la función pasada por el padre (Navbar)
+    }
+    // Nota: El navegador gestionará la navegación a la URL del fragmento (#home, #about, etc.) automáticamente
+  };
   return (
     <ul className="nav-ul">
       <li className="nav-li">
-        <a className="nav-link" href="#home">
+        <a className="nav-link" href="#home" onClick={handleLinkClick}>
           Inicio
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#about">
+        <a className="nav-link" href="#about" onClick={handleLinkClick}>
           Sobre MI
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#proyect">
+        <a className="nav-link" href="#proyect" onClick={handleLinkClick}>
           Proyectos
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#contact">
+        <a className="nav-link" href="#contact" onClick={handleLinkClick}>
           Contacto
         </a>
       </li>
@@ -28,6 +35,11 @@ function Navigation() {
 }
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+    // Función para cerrar el menú. Se pasa al componente Navigation.
+  const closeMenu = () => setIsOpen(false);
+  
+  // Función para alternar el estado del menú
+  const toggleMenu = () => setIsOpen(!isOpen);
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
@@ -62,7 +74,7 @@ const Navbar = () => {
           transition={{ duration: 1 }}
         >
           <nav className="pb-5">
-            <Navigation />
+            <Navigation onLinkClick={closeMenu}/>
           </nav>
         </motion.div>
       )}
