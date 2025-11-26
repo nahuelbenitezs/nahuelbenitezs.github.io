@@ -86,7 +86,7 @@ const About = () => {
         <div className="grid-special-color grid-4">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center headtext">
-              Quieres mi correo?
+              ¿Quieres mi correo?
             </p>
             <CopyEmailButton />
           </div>
