@@ -73,7 +73,7 @@ const About = () => {
         {/* Grid 3 */}
         <div className="grid-black-color grid-3">
           <div className="z-10 w-[50%]">
-            <p className="headtext">Time Zone</p>
+            <p className="headtext">Zona Horaria</p>
             <p className="subtext">
               Soy de Uruguay, estoy abierto a trabajar de forma remota.
             </p>
